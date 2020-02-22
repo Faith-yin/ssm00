@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ypf.mapper.UserMapper" >
+
+  <!--条件查询-->
+  <select id="findUserByName" resultType="User" parameterType="String">
+    select * from test01 where username = #{username} and deleteFlag = 0
+  </select>
+
+  <!--查询全部-->
+  <select id="showAllUser" resultType="User">
+    select * from test01 where deleteFlag = 0
+  </select>
+
+  <!--增加-->
+  <insert id="addUser" parameterType="User">
+    insert into test01 (username,age,school,hobby)
+      values(#{username},#{age},#{school},#{hobby})
+  </insert>
+
+  <!--删除-->
+  <update id="deleteUserByName" parameterType="String">
+    update test01 set deleteFlag = 1 where username = #{username}
+  </update>
+  
+  <!--修改-->
+  <update id="updateUserByName" parameterType="User">
+    update test01
+    <trim prefix="set" suffixOverrides=",">
+      <if test="username!=null">username=#{username},</if>
+      <if test="age!=null">age=#{age},</if>
+      <if test="school!=null">school=#{school},</if>
+      <if test="hobby!=null">hobby=#{hobby},</if>
+    </trim>
+    where username = #{username}
+  </update>
+
+
+
+
+
+
+
+
+  <!--<select id="toLogin" resultType="Account" parameterType="Account" >-->
+    <!--select userid,username,password from account where-->
+    <!--1=1-->
+    <!--<if test="username != null" >-->
+      <!--and username = #{username}-->
+    <!--</if>-->
+    <!--<if test="password != null" >-->
+      <!--and password = #{password}-->
+    <!--</if>-->
+  <!--</select>-->
+
+
+  <!--<select id="selectUserById" resultType="User" parameterType="Integer" >-->
+    <!--select * from user where id = #{value}-->
+  <!--</select>-->
+
+  <!--<update id="updateUserById" parameterType="User">-->
+    <!--update user-->
+    <!--<trim prefix="set" suffixOverrides=",">-->
+      <!--<if test="id!=null">id=#{id},</if>-->
+      <!--<if test="username!=null">username=#{username},</if>-->
+      <!--<if test="phonenumber!=null">phonenumber=#{phonenumber},</if>-->
+      <!--<if test="mail!=null">mail=#{mail},</if>-->
+      <!--<if test="address!=null">address=#{address},</if>-->
+      <!--<if test="sex!=null">sex=#{sex},</if>-->
+      <!--<if test="signature!=null">signature=#{signature},</if>-->
+    <!--</trim>-->
+    <!--WHERE id=#{id}-->
+  <!--</update>-->
+
+  <!--<select id="selectCountById" parameterType="Integer" resultType="Integer">-->
+    <!--select count(*) from product where uid = #{value}-->
+  <!--</select>-->
+  
+</mapper>
