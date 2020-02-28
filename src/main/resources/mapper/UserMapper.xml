@@ -14,8 +14,8 @@
 
   <!--增加-->
   <insert id="addUser" parameterType="User">
-    insert into test01 (username,age,school,hobby)
-      values(#{username},#{age},#{school},#{hobby})
+    insert into test01 (username,age,school,hobby,date)
+      values(#{username},#{age},#{school},#{hobby},#{date})
   </insert>
 
   <!--删除-->

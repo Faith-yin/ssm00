@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 /**
  *用户实体类
  */
@@ -24,6 +27,8 @@ public class User {
     private String hobby;
     //删除标志
     private int deleteFlag;
+    //日期
+    private Date date;
 
 
 }

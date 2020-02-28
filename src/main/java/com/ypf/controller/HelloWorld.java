@@ -1,8 +1,10 @@
 package com.ypf.controller;
 
+import com.ypf.util.TimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,4 +26,40 @@ public class HelloWorld {
         map.put("data", "Hello, ypf ...");
         return map;
     }
+
+
+    private TimeFormat timeFormat;
+
+    @RequestMapping("/dateToStamp")
+    public String dateToStamp() {
+        String res = null;
+        try {
+            res = timeFormat.dateToStamp("1996-09-13 12:23:01");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    @RequestMapping("/stampToDate")
+    public String stampToDate() {
+        String res = null;
+        res = timeFormat.stampToDate("842588581000");
+        return res;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
